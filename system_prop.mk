@@ -121,7 +121,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.rat_on=combine \
     persist.radio.data_ltd_sys_ind=1 \
     persist.radio.calls.on.ims=1
-
-# Wifi calling
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.data.iwlan.enable=true
