@@ -49,6 +49,9 @@ endif
 #HAL 1.0 Flags
 LOCAL_CFLAGS += -DDEFAULT_DENOISE_MODE_ON -DHAL3
 
+LOCAL_CLANG_CFLAGS += \
+	-Wno-unreachable-code-loop-increment
+
 LOCAL_C_INCLUDES := \
         $(LOCAL_PATH)/stack/common \
         frameworks/native/include/media/hardware \
