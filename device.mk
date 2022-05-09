@@ -259,6 +259,10 @@ PRODUCT_PACKAGES += \
    libaudioclient_shim \
    librmnetctl
 
+PRODUCT_PACKAGES += \
+    android.hardware.radio@1.0 \
+    android.hardware.radio.deprecated@1.0
+
 # SEC config
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
