@@ -26,6 +26,8 @@ on early-init
     chown system system /sys/kernel/debug/kgsl/proc
 
 on init
+    setprop ro.kernel.ebpf.supported false
+
     # Create UDS structure for base VR services.
     mkdir /dev/socket/pdx 0775 system system
     mkdir /dev/socket/pdx/system 0775 system system
