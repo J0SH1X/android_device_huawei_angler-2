@@ -128,4 +128,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.dbg.wfc_avail_ovr=1 \
     persist.radio.rat_on=combine \
     persist.radio.data_ltd_sys_ind=1 \
-    persist.radio.calls.on.ims=1
+    persist.radio.calls.on.ims=1 \
+    ro.ims.dynamic_bind=false
