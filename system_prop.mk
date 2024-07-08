@@ -109,6 +109,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.ssr.restart_level="ALL_ENABLE" \
     persist.sys.ssr.enable_ramdumps=0
 
+# System
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vndk.version=current
+
 # Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_cdma_sub=0 \
