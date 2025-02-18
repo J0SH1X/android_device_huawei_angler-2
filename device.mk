@@ -235,14 +235,14 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/bin/init.radio.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.radio.sh \
     $(LOCAL_PATH)/rootdir/etc/fstab.angler:$(TARGET_RAMDISK_OUT)/fstab.angler \
     $(LOCAL_PATH)/rootdir/etc/fstab.angler:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.angler \
-    $(LOCAL_PATH)/rootdir/etc/init.angler.diag.rc.user:root/init.angler.diag.rc \
-    $(LOCAL_PATH)/rootdir/etc/init.angler.diag.rc.userdebug:root/init.angler.diag.rc \
-    $(LOCAL_PATH)/rootdir/etc/init.angler.nanohub.rc:root/init.angler.sensorhub.rc \
-    $(LOCAL_PATH)/rootdir/etc/init.angler.rc:root/init.angler.rc \
-    $(LOCAL_PATH)/rootdir/etc/init.angler.sensorhub.rc:root/init.angler.sensorhub.rc \
-    $(LOCAL_PATH)/rootdir/etc/init.angler.usb.rc:root/init.angler.usb.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.angler.diag.rc.user:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.angler.diag.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.angler.diag.rc.userdebug:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.angler.diag.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.angler.nanohub.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.angler.sensorhub.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.angler.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.angler.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.angler.sensorhub.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.angler.sensorhub.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.angler.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.angler.usb.rc \
     $(LOCAL_PATH)/rootdir/etc/init.recovery.angler.rc:root/init.recovery.angler.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.angler.rc:root/ueventd.angler.rc
+    $(LOCAL_PATH)/rootdir/etc/ueventd.angler.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.angler.rc
 
 PRODUCT_PACKAGES += \
     fstab.ramdisk \
