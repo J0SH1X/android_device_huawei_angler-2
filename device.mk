@@ -19,11 +19,15 @@
 #
 # Everything in this directory will become public
 
+PRODUCT_ENABLE_UFFD_GC := false
+
 # AAPT
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := 560dpi
 # A list of dpis to select prebuilt apk, in precedence order.
 PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
+
+
 
 # APEX
 PRODUCT_COPY_FILES += \
@@ -32,11 +36,9 @@ PRODUCT_COPY_FILES += \
 # Audio
 PRODUCT_PACKAGES += \
     audio.primary.msm8994 \
-    audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default \
-    libaudio-resampler \
-    dsm_ctrl
+    libaudio-resampler
 
 USE_XML_AUDIO_POLICY_CONF := 1
 
@@ -72,15 +74,13 @@ PRODUCT_PACKAGES += \
 # CAF Utils
 $(call inherit-product, $(LOCAL_PATH)/utils.mk)
 
-# Camera
-PRODUCT_PACKAGES += \
-    camera.msm8994 \
-    libcamera \
-    libmmcamera_interface \
-    libmmcamera_interface2 \
-    libmmjpeg_interface \
-    libqomx_core \
-    mm-qcamera-app
+# # Camera
+# PRODUCT_PACKAGES += \
+#     camera.msm8994 \
+#     libmmcamera_interface \
+#     libmmjpeg_interface \
+#     libqomx_core \
+#     mm-qcamera-app
 
 $(call add-product-sanitizer-module-config,cameraserver,never)
 $(call add-product-sanitizer-module-config,mm-qcamera-daemon,never)
@@ -97,7 +97,6 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_PACKAGES += \
     gralloc.msm8994 \
     hwcomposer.msm8994 \
-    libgenlock \
     memtrack.msm8994
 
 # Filesystem
@@ -105,20 +104,18 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
    fs_config_files
 
-# Fingerprint Sensor
-PRODUCT_PACKAGES += \
-    fingerprint.angler
+# Fingerprint Sensor#
+#PRODUCT_PACKAGES += \
+    #fingerprint.angler
 
 # Gatekeeper
 #PRODUCT_PACKAGES += \
 #    gatekeeper.msm8994
 
 # GPS
-PRODUCT_PACKAGES += \
-    libgps.utils \
-    libgnss \
-    liblocation_api \
-    gps.msm8994
+# PRODUCT_PACKAGES += \
+#     libgps.utils \
+#     gps.msm8994
 
 # GPS configuration
 PRODUCT_COPY_FILES += \
@@ -181,7 +178,6 @@ PRODUCT_PACKAGES += \
     libOmxCore \
     libmm-omxcore \
     libOmxVdec \
-    libOmxVdecHevc \
     libOmxVenc
 
 # Overlay
@@ -237,7 +233,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/bin/init.qcom.devstart.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.devstart.sh	\
     $(LOCAL_PATH)/rootdir/bin/init.qcom.devwait.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.devwait.sh \
     $(LOCAL_PATH)/rootdir/bin/init.radio.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.radio.sh \
-    $(LOCAL_PATH)/rootdir/etc/fstab.angler:root/fstab.angler \
+    $(LOCAL_PATH)/rootdir/etc/fstab.angler:$(TARGET_RAMDISK_OUT)/fstab.angler \
+    $(LOCAL_PATH)/rootdir/etc/fstab.angler:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.angler \
     $(LOCAL_PATH)/rootdir/etc/init.angler.diag.rc.user:root/init.angler.diag.rc \
     $(LOCAL_PATH)/rootdir/etc/init.angler.diag.rc.userdebug:root/init.angler.diag.rc \
     $(LOCAL_PATH)/rootdir/etc/init.angler.nanohub.rc:root/init.angler.sensorhub.rc \
@@ -246,6 +243,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/init.angler.usb.rc:root/init.angler.usb.rc \
     $(LOCAL_PATH)/rootdir/etc/init.recovery.angler.rc:root/init.recovery.angler.rc \
     $(LOCAL_PATH)/rootdir/etc/ueventd.angler.rc:root/ueventd.angler.rc
+
+PRODUCT_PACKAGES += \
+    fstab.ramdisk \
+    fstab.angler 
 
 # RIL
 PRODUCT_PACKAGES += \
@@ -265,8 +266,8 @@ NANOHUB_SENSORHAL_SENSORLIST := $(LOCAL_PATH)/sensorhal/sensorlist.cpp
 NANOHUB_SENSORHAL_DIRECT_REPORT_ENABLED := true
 
 PRODUCT_PACKAGES += \
-    sensors.angler \
-    activity_recognition.angler
+    sensors.angler
+   # activity_recognition.angler
 
 ifeq ($(TARGET_USES_CHINOOK_SENSORHUB),true)
 PRODUCT_PACKAGES += \
@@ -325,8 +326,7 @@ PRODUCT_PACKAGES += \
 
 # Verity
 # Setup dm-verity config
-PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc.0/f9824900.sdhci/by-name/system
-$(call inherit-product, build/target/product/verity.mk)
+#RODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc.0/f9824900.sdhci/by-name/system
 
 # VNDK
 PRODUCT_EXTRA_VNDK_VERSIONS := 29
@@ -340,21 +340,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vndk.version=current
 
-# VTS Tests
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
-# For VTS profiling.
-PRODUCT_PACKAGES += \
-     libvts_profiling \
-     libvts_multidevice_proto
-endif
-
 # Wi-Fi
 PRODUCT_PACKAGES += \
     libwpa_client \
     hostapd \
-    wlutil \
     wificond \
-    wifilogd \
     wpa_supplicant \
     wpa_supplicant.conf \
     WifiOverlay
