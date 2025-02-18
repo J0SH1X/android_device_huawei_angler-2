@@ -99,6 +99,10 @@ PRODUCT_PACKAGES += \
     hwcomposer.msm8994 \
     memtrack.msm8994
 
+# Fastbootd
+PRODUCT_PACKAGES += 
+    fastbootd
+
 # Filesystem
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += \
