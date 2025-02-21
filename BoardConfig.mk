@@ -27,8 +27,6 @@ BOARD_USES_ALSA_AUDIO := true
 AUDIO_FEATURE_ENABLED_DSM_FEEDBACK := true
 AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
 
-# Apex
-TARGET_FLATTEN_APEX := true
 
 # Architecture
 TARGET_ARCH := arm64
@@ -101,7 +99,7 @@ BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
 BOARD_RAMDISK_OFFSET     := 0x02000000
 
 BOARD_KERNEL_CMDLINE := androidboot.hardware=angler androidboot.console=ttyHSL0 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-3 no_console_suspend swiotlb=2048
-BOARD_KERNEL_CMDLINE += loop.max_part=7 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += loop.max_part=7 androidboot.selinux=permissive androidboot.boot_devices=soc.0/f9824900.sdhci
 
 
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
@@ -143,10 +141,14 @@ BOARD_ROOT_EXTRA_FOLDERS := firmware persist
 
 TARGET_FS_CONFIG_GEN += device/huawei/angler/config.fs
 
-# Manifest/Vintf
-DEVICE_MANIFEST_FILE := device/huawei/angler/manifest.xml
-PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
+# HIDL
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
+    device/huawei/angler/framework_compatibility_matrix.xml \
+    hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml \
+    hardware/qcom-caf/common/vendor_framework_compatibility_matrix_legacy.xml \
+    vendor/lineage/config/device_framework_matrix.xml
 
+DEVICE_MANIFEST_FILE := device/huawei/angler/manifest.xml
 DEVICE_MATRIX_FILE := device/huawei/angler/compatibility_matrix.xml
 
 #NFC
@@ -157,7 +159,7 @@ BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
 TARGET_USES_INTERACTION_BOOST := true
-TARGET_RECOVERY_FSTAB = device/huawei/angler/rootdir/etc/recovery.fstab
+TARGET_RECOVERY_FSTAB = device/huawei/angler/rootdir/etc/fstab.angler
 TARGET_RECOVERY_UI_LIB := librecovery_ui_nanohub
 
 # Releasetools

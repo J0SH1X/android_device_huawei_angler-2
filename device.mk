@@ -71,9 +71,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libbt-vendor
 
-# CAF Utils
-$(call inherit-product, $(LOCAL_PATH)/utils.mk)
-
 # # Camera
 # PRODUCT_PACKAGES += \
 #     camera.msm8994 \
@@ -89,7 +86,7 @@ $(call add-product-sanitizer-module-config,mm-qcamera-daemon,never)
 PRODUCT_CHARACTERISTICS := nosdcard
 
 # Dalvik/HWUI
-$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 
@@ -100,8 +97,8 @@ PRODUCT_PACKAGES += \
     memtrack.msm8994
 
 # Fastbootd
-PRODUCT_PACKAGES += 
-    fastbootd
+# PRODUCT_PACKAGES += \
+#     fastbootd
 
 # Filesystem
 # For android_filesystem_config.h
@@ -125,8 +122,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/gps.conf:qcom
 
-# HIDL
-$(call inherit-product, $(LOCAL_PATH)/hidl.mk)
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
@@ -149,9 +144,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media/media_codecs_performance.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_performance.xml \
     $(LOCAL_PATH)/media/media_profiles.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_profiles.xml
 
-# MSM8994 inherits
-$(call inherit-product-if-exists, hardware/qcom/msm8994/msm8994.mk)
-$(call inherit-product-if-exists, vendor/qcom/gpu/msm8994/msm8994-gpu-vendor.mk)
+
 
 # MSM IRQ Balancer configuration
 PRODUCT_COPY_FILES += \
@@ -245,8 +238,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/init.angler.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.angler.rc \
     $(LOCAL_PATH)/rootdir/etc/init.angler.sensorhub.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.angler.sensorhub.rc \
     $(LOCAL_PATH)/rootdir/etc/init.angler.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.angler.usb.rc \
-    $(LOCAL_PATH)/rootdir/etc/init.recovery.angler.rc:root/init.recovery.angler.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.angler.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.angler.rc
+    $(LOCAL_PATH)/rootdir/etc/ueventd.angler.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.angler.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.angler.rc:root/init.recovery.angler.rc
 
 PRODUCT_PACKAGES += \
     fstab.ramdisk \
@@ -340,10 +333,6 @@ PRODUCT_COPY_FILES += \
     prebuilts/vndk/v29/arm64/arch-arm64-armv8-a/shared/vndk-core/libprotobuf-cpp-lite.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libprotobuf-cpp-lite-v29.so \
     prebuilts/vndk/v29/arm64/arch-arm64-armv8-a/shared/vndk-sp/libcutils.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libcutils-v29.so
 
-# VNDK Version
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vndk.version=current
-
 # Wi-Fi
 PRODUCT_PACKAGES += \
     libwpa_client \
@@ -366,5 +355,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
     $(LOCAL_PATH)/configs/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
 
-# WLAN firmware
+
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4358/device-bcm.mk)
+$(call inherit-product, $(LOCAL_PATH)/hidl.mk)
+$(call inherit-product-if-exists, hardware/qcom/msm8994/msm8994.mk)
+$(call inherit-product-if-exists, vendor/qcom/gpu/msm8994/msm8994-gpu-vendor.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+$(call inherit-product, $(LOCAL_PATH)/utils.mk)
