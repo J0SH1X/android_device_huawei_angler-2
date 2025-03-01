@@ -31,9 +31,10 @@ PRODUCT_PACKAGES += \
 # Characteristics
 PRODUCT_CHARACTERISTICS := nosdcard
 
-# Fingerprint sensor
+# Fingerprint Sensor
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.0-service.angler
+    android.hardware.biometrics.fingerprint@2.1-service \
+    fingerprint.angler
 
 # Filesystem
 # For android_filesystem_config.h
