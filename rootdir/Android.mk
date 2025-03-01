@@ -35,30 +35,6 @@ LOCAL_MODULE_PATH  := $(TARGET_RAMDISK_OUT)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := init.angler.diag.rc.user
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES := etc/init.angler.diag.rc.user
-LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)/init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := init.angler.diag.rc.userdebug
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES := etc/init.angler.diag.rc.userdebug
-LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)/init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := init.angler.nanohub.rc
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES := etc/init.angler.nanohub.rc
-LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)/init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
 LOCAL_MODULE := init.angler.rc
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := ETC
@@ -75,34 +51,9 @@ LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)/init/hw
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := init.angler.usb.rc
+LOCAL_MODULE := init.angler.nanohub.rc
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES := etc/init.angler.usb.rc
+LOCAL_SRC_FILES := etc/init.angler.nanohub.rc
 LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)/init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := init.recovery.angler.rc
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES := etc/init.recovery.angler.rc
-LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)/init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := recovery.fstab
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES := etc/recovery.fstab
-LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := ueventd.angler.rc
-LOCAL_MODULE_STEM  := ueventd.rc
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES := etc/ueventd.angler.rc
-LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)
 include $(BUILD_PREBUILT)

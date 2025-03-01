@@ -1,1 +1,0 @@
-allow per_mgr device:file { open write };

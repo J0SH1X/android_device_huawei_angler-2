@@ -1,0 +1,28 @@
+cc_library_shared {
+    name: "libsensor_vendor",
+    srcs: [
+        "libsensor_vendor/Sensor.cpp",
+        "libsensor_vendor/SensorEventQueue.cpp",
+        "libsensor_vendor/SensorManager.cpp",
+    ],
+    shared_libs: [
+        "libsensorndkbridge",
+        "libutils",
+    ],
+    vendor: true,
+}
+
+cc_library_shared {
+
+    srcs: ["libshim_sensor/sensor.cpp"],
+
+    shared_libs: [
+	"libsensor_vendor",
+	"libutils"
+    ],
+
+    name: "libshim_sensor",
+
+    proprietary: true,
+
+}

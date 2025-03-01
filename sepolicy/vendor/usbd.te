@@ -1,2 +1,0 @@
-# this goes in the neverallows domain
-dontaudit usbd self:capability dac_override;

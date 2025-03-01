@@ -8,7 +8,7 @@
 
 set -e
 
-DEVICE=angler
+DEVICE=angler-treble
 VENDOR=huawei
 
 # Load extractutils and do some sanity checks
@@ -51,22 +51,50 @@ done
 
 if [ -z "${SRC}" ]; then
     SRC="adb"
-fi
+ fi
+#     /vendor/bin/ATFWD-daemon|libcutils_shim.so \
+#     /vendor/lib64/libcne.so|libcutils_shim.so
+
+
+
+# sed -i 's!/system/etc/thermal-engine.conf!/vendor/etc/thermal-engine.conf!' bin/thermal-engine 
+# sed -i 's!system/etc/sound_trigger_mixer_paths.xml!vendor/etc/sound_trigger_mixer_paths.xml!' lib/hw/sound_trigger.primary.msm8994.so 
+# sed -i 's!system/etc/sound_trigger_mixer_paths.xml!vendor/etc/sound_trigger_mixer_paths.xml!' lib64/hw/sound_trigger.primary.msm8994.so
+# sed -i 's!/system/etc/sound_trigger_platform_info.xml!/vendor/etc/sound_trigger_platform_info.xml!' lib/hw/sound_trigger.primary.msm8994.so 
+# sed -i 's!/system/etc/sound_trigger_platform_info.xml!/vendor/etc/sound_trigger_platform_info.xml!' lib64/hw/sound_trigger.primary.msm8994.so
+
+#sed -i "s/SSLv3_client_method/SSLv23_method\x00\x00\x00\x00\x00\x00/" "${2}"
 
 function blob_fixup() {
     case "${1}" in
-    # vendor/lib/mediadrm/libwvdrmengine.so)
-    #     patchelf --replace-needed "libprotobuf-cpp-lite.so" "libprotobuf-cpp-lite-v28.so" "${2}"
-    # ;;
-    # vendor/lib64/libsettings.so)
-    #     patchelf --replace-needed "libprotobuf-cpp-full.so" "libprotobuf-cpp-full-v28.so" "${2}"
-    # ;;
-    # vendor/bin/pm-service)
-    #     grep -q libutils-v33.so "${2}" || "${PATCHELF}" --add-needed "libutils-v33.so" "${2}"
-    # ;;
-    # vendor/lib64/com.quicinc.cne.api@1.0.so)
-    #     patchelf --replace-needed "libhidlbase.so" "libhidlbase-v32.so" "${2}"
-    # ;;
+    vendor/bin/ATFWD-daemon)
+        patchelf --add-needed "libcutils_shim.so" "${2}"
+    ;;
+    vendor/bin/cne)
+        patchelf --add-needed "libcutils_shim.so" "${2}"
+    ;;
+    vendor/lib/liboemcamera.so )
+        patchelf --add-needed "libshim_sensor.so" "${2}"
+        patchelf --replace-needed "libgui.so" "libgui_vendor.so" "${2}"
+        patchelf --replace-needed "libsensor.so" "libsensor_vendor.so" "${2}"
+        patchelf --replace-needed "libandroid.so" "libsensorndkbridge.so" "${2}"
+    ;;
+    vendor/lib/libmmcamera2_stats_modules.so )
+        patchelf --replace-needed "libandroid.so" "libsensorndkbridge.so" "${2}"
+        patchelf --replace-needed "libgui.so" "libgui_vendor.so" "${2}"
+        patchelf --replace-needed "libsensor.so" "libsensor_vendor.so" "${2}"
+    ;;
+    vendor/bin/thermal-engine )
+        sed -i 's!/system/etc/thermal-engine.conf!/vendor/etc/thermal-engine.conf!' "${2}"
+    ;;
+    vendor/lib/hw/sound_trigger.primary.msm8994.so )
+        sed -i 's!system/etc/sound_trigger_mixer_paths.xml!vendor/etc/sound_trigger_mixer_paths.xml!' "${2}"
+        sed -i 's!/system/etc/sound_trigger_platform_info.xml!/vendor/etc/sound_trigger_platform_info.xml!' "${2}"
+    ;;
+    vendor/lib/hw/sound_trigger.primary.msm8994.so )
+        sed -i 's!system/etc/sound_trigger_mixer_paths.xml!vendor/etc/sound_trigger_mixer_paths.xml!' "${2}"
+        sed -i 's!/system/etc/sound_trigger_platform_info.xml!/vendor/etc/sound_trigger_platform_info.xml!' "${2}"
+    ;;
     esac
 }
 

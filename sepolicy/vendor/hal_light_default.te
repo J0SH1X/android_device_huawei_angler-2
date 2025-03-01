@@ -1,3 +1,0 @@
-allow hal_light_default sysfs_qpnp_26:dir { open search };
-allow hal_light_default sysfs_qpnp_26:file { write getattr open };
-
