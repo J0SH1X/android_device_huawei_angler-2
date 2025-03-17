@@ -51,22 +51,24 @@ done
 
 if [ -z "${SRC}" ]; then
     SRC="adb"
-fi
+ fi
+#     /vendor/bin/ATFWD-daemon|libcutils_shim.so \
+#     /vendor/lib64/libcne.so|libcutils_shim.so
 
 function blob_fixup() {
     case "${1}" in
-    # vendor/lib/mediadrm/libwvdrmengine.so)
-    #     patchelf --replace-needed "libprotobuf-cpp-lite.so" "libprotobuf-cpp-lite-v28.so" "${2}"
-    # ;;
-    # vendor/lib64/libsettings.so)
-    #     patchelf --replace-needed "libprotobuf-cpp-full.so" "libprotobuf-cpp-full-v28.so" "${2}"
-    # ;;
-    # vendor/bin/pm-service)
-    #     grep -q libutils-v33.so "${2}" || "${PATCHELF}" --add-needed "libutils-v33.so" "${2}"
-    # ;;
-    # vendor/lib64/com.quicinc.cne.api@1.0.so)
-    #     patchelf --replace-needed "libhidlbase.so" "libhidlbase-v32.so" "${2}"
-    # ;;
+    vendor/bin/ATFWD-daemo)
+        patchelf --add-needed "libcutils_shim.so" "${2}"
+    ;;
+    vendor/lib64/libcne.soo)
+        patchelf --add-needed "libcutils_shim.so" "${2}"
+    ;;
+    vendor/lib/liboemcamera.so)
+        patchelf --add-needed "libshim_sensor.so" "${2}"
+    ;;
+    vendor/bin/pm-service)
+        grep -q libutils-v33.so "${2}" || "${PATCHELF}" --add-needed "libutils-v33.so" "${2}"
+    ;;
     esac
 }
 

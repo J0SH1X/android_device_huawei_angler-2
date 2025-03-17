@@ -38,6 +38,7 @@ const static std::string kRedLedTimerPath= "/sys/class/leds/red/on_off_ms";
 const static std::string kGreenLedTimerPath = "/sys/class/leds/green/on_off_ms";
 const static std::string kBlueLedTimerPath = "/sys/class/leds/blue/on_off_ms";
 const static std::string kRgbLockPath = "/sys/class/leds/red/rgb_start";
+bool isLedTimerSupported = true;
 
 int main() {
     printf("asdf\n");
@@ -65,20 +66,20 @@ int main() {
 
     std::ofstream redLedTimer(kRedLedTimerPath);
         if (!redLedTimer) {
+        isLedTimerSupported = false;
         ALOGE("Failed to open %s, error=%d (%s)", kRedLedTimerPath.c_str(), errno, strerror(errno));
-        return -errno;
     }
 
     std::ofstream greenLedTimer(kGreenLedTimerPath);
         if (!greenLedTimer) {
+        isLedTimerSupported = false;
         ALOGE("Failed to open %s, error=%d (%s)", kGreenLedTimerPath.c_str(), errno, strerror(errno));
-        return -errno;
     }
 
     std::ofstream blueLedTimer(kBlueLedTimerPath);
         if (!blueLedTimer) {
+        isLedTimerSupported = false;
         ALOGE("Failed to open %s, error=%d (%s)", kBlueLedTimerPath.c_str(), errno, strerror(errno));
-        return -errno;
     }
 
     std::ofstream rgbLock(kRgbLockPath);
