@@ -49,6 +49,18 @@ BOARD_QCOM_DYNAMIC_PARTITIONS_SIZE := 3217031168
 # Recovery
 TARGET_RECOVERY_FSTAB = device/huawei/angler/rootdir/etc/fstab.angler
 
+# Wifi related defines
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+WPA_SUPPLICANT_VERSION := VER_0_8_X
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+BOARD_HOSTAPD_DRIVER := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+BOARD_WLAN_DEVICE := bcmdhd
+WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
+WIFI_DRIVER_FW_PATH_STA := "/vendor/firmware/fw_bcmdhd.bin"
+WIFI_DRIVER_FW_PATH_AP := "/vendor/firmware/fw_bcmdhd_apsta.bin"
+WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
+WIFI_AVOID_IFACE_RESET_MAC_CHANGE := true
 
 -include vendor/huawei/angler/BoardConfigVendor.mk
 -include device/huawei/msm8994-common/BoardConfigCommon.mk
