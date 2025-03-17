@@ -34,7 +34,7 @@
 #define __STDC_LIMIT_MACROS
 #include <cutils/properties.h>
 #include <hardware/camera3.h>
-#include <camera/CameraMetadata.h>
+#include <CameraMetadata.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -5387,7 +5387,7 @@ void QCamera3HardwareInterface::dumpMetadataToFile(tuning_params_t &meta,
                 type,
                 frameNumber);
         filePath.append(buf);
-        int file_fd = open(filePath.string(), O_RDWR | O_CREAT, 0777);
+        int file_fd = open(filePath.c_str(), O_RDWR | O_CREAT, 0777);
         if (file_fd >= 0) {
             ssize_t written_len = 0;
             meta.tuning_data_version = TUNING_DATA_VERSION;

@@ -30,12 +30,13 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/inc \
     $(LOCAL_PATH)/../common \
     system/media/camera/include \
-    system/core/libutils/include
+    system/core/libutils/include \
+    hardware/libhardware/include
 
 LOCAL_CFLAGS += -DCAMERA_ION_HEAP_ID=ION_IOMMU_HEAP_ID
 LOCAL_C_INCLUDES+= $(kernel_includes)
 LOCAL_ADDITIONAL_DEPENDENCIES := $(common_deps)
-LOCAL_HEADER_LIBRARIES := generated_kernel_headers
+LOCAL_HEADER_LIBRARIES := generated_kernel_headers libhardware_includes
 
 LOCAL_C_INCLUDES += hardware/qcom/media/msm8974/mm-core/inc
 
@@ -49,7 +50,7 @@ LOCAL_SRC_FILES := $(MM_CAM_FILES)
 
 LOCAL_MODULE           := libmmcamera_interface
 LOCAL_PRELINK_MODULE   := false
-LOCAL_SHARED_LIBRARIES := libdl libcutils liblog
+LOCAL_SHARED_LIBRARIES := libdl libcutils liblog libhardware
 LOCAL_HEADER_LIBRARIES += camera_common_headers
 LOCAL_MODULE_TAGS := optional
 LOCAL_VENDOR_MODULE := true
