@@ -53,10 +53,10 @@ PRODUCT_COPY_FILES += \
      android.hardware.light@2.0-service.angler
 
 
-# # NFC configurations
-# PRODUCT_COPY_FILES += \
-#     $(LOCAL_PATH)/configs/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
-#     $(LOCAL_PATH)/configs/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
+# NFC configurations
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
+    $(LOCAL_PATH)/configs/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
 
 # Ramdisk
 
