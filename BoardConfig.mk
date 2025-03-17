@@ -22,6 +22,9 @@ BOARD_CUSTOM_BT_CONFIG := device/huawei/angler/bluetooth/vnd_angler.txt
 # Board
 TARGET_BOOTLOADER_BOARD_NAME := angler
 
+# Camera
+TARGET_USES_AOSP := true
+
 # Screen density
 TARGET_SCREEN_DENSITY := 560
 
