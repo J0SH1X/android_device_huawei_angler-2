@@ -19,13 +19,13 @@
 #
 # Everything in this directory will become public
 
-# # Camera
-# PRODUCT_PACKAGES += \
-#     camera.msm8994 \
-#     libmmcamera_interface \
-#     libmmjpeg_interface \
-#     libqomx_core \
-#     mm-qcamera-app
+# Camera
+PRODUCT_PACKAGES += \
+    camera.msm8994 \
+    libmmcamera_interface \
+    libmmjpeg_interface \
+    libqomx_core \
+    mm-qcamera-app
 
 
 # Filesystem
