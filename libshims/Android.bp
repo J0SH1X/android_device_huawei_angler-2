@@ -30,3 +30,10 @@ cc_library_shared {
     srcs: ["libaudioclient_shim/libaudioclient_shim.cpp"],
 }
 
+cc_library_shared {
+    name: "libshim_mutexdestroy",
+    shared_libs: ["libc"],
+    srcs: ["bionic/pthread_mutex_destroy.cpp"],
+    proprietary: true,
+}
+
