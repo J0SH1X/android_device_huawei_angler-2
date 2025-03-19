@@ -12,3 +12,13 @@ cc_library_shared {
     proprietary: true,
 
 }
+
+cc_library_shared {
+
+    srcs: ["libshim_awb/awb.c"],
+
+    name: "libshim_awb",
+
+    proprietary: true,
+
+}
