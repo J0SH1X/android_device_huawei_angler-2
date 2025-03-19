@@ -102,7 +102,8 @@ endif
 
 # Shims
 PRODUCT_PACKAGES += \
-    libshim_sensor
+    libshim_sensor.msm8994 \
+    libshim_awb
 
 # Thermal configuration
 PRODUCT_COPY_FILES += \

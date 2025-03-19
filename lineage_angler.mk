@@ -32,6 +32,6 @@ PRODUCT_MANUFACTURER := Huawei
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
 $(call inherit-product, device/huawei/angler/device.mk)
-$(call inherit-product-if-exists, vendor/huawei/angler/device-vendor.mk)
+$(call inherit-product-if-exists, vendor/huawei/angler/angler-vendor.mk)
 
 BUILD_FINGERPRINT := google/angler/angler:8.1.0/OPM3.171019.014/4503998:user/release-keys
