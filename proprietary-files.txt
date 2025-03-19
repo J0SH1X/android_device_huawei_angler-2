@@ -1,6 +1,6 @@
 # taken from system.img
-vendor/bin/ssr_setup
-vendor/bin/subsystem_ramdump
+system/bin/ssr_setup:vendor/bin/ssr_setup
+system/bin/subsystem_ramdump:vendor/bin/subsystem_ramdump
 system/etc/permissions/cneapiclient.xml
 system/etc/permissions/com.android.omadm.service.xml
 system/etc/permissions/com.android.sdm.plugins.connmo.xml
@@ -10,13 +10,10 @@ system/etc/permissions/privapp-permissions-google.xml
 system/etc/permissions/com.google.android.camera.experimental2016.xml
 system/etc/permissions/qcrilhook.xml
 system/etc/sysconfig/angler_common.xml
-system/etc/sysconfig/nexus.xml
 system/etc/sysconfig/whitelist_com.android.omadm.service.xml
 system/lib/libdmengine.so
 system/lib/libdmjavaplugin.so
 system/lib/libfilterpack_facedetect.so
-system/lib64/libaptX_encoder.so
-system/lib64/libaptXHD_encoder.so
 system/lib64/libfilterpack_facedetect.so
 system/lib64/libManufacture.so
 
@@ -28,13 +25,12 @@ vendor/bin/diag_klog
 vendor/bin/diag_mdlog
 vendor/bin/diag_test_server
 vendor/bin/dsm_ctrl
-vendor/bin/imscmservice
 vendor/bin/imsdatadaemon
 vendor/bin/imsqmidaemon
 vendor/bin/ims_rtp_daemon
 vendor/bin/InputEventFind
 vendor/bin/irsc_util
-vendor/bin/loc_launcher
+vendor/bin/loc_launcher;DISABLE_CHECKELF
 vendor/bin/mm-qcamera-daemon
 vendor/bin/msm_irqbalance
 vendor/bin/netmgrd
@@ -143,7 +139,6 @@ vendor/firmware/widevine.b03
 vendor/firmware/widevine.mdt
 
 # vendor/lib64
-vendor/lib64/android.frameworks.bufferhub@1.0.so
 vendor/lib64/egl/eglSubDriverAndroid.so
 vendor/lib64/egl/libEGL_adreno.so
 vendor/lib64/egl/libGLESv1_CM_adreno.so
@@ -191,9 +186,6 @@ vendor/lib64/libimscamera_jni.so
 vendor/lib64/lib-imsdpl.so
 vendor/lib64/libimsmedia_jni.so
 vendor/lib64/lib-imsqimf.so
-vendor/lib64/lib-imsrcscmclient.so
-vendor/lib64/lib-ims-rcscmjni.so
-vendor/lib64/lib-imsrcscmservice.so
 vendor/lib64/lib-imsrcscm.so
 vendor/lib64/lib-imsrcs.so
 vendor/lib64/lib-imsSDP.so
@@ -215,7 +207,7 @@ vendor/lib64/liblqe.so
 vendor/lib64/libmdmdetect.so
 vendor/lib64/libmdsprpc.so
 vendor/lib64/libmm-abl-oem.so
-vendor/lib64/libmm-abl.so
+vendor/lib64/libmm-abl.so;DISABLE_CHECKELF
 vendor/lib64/libmm-als.so
 vendor/lib64/libmmcamera2_q3a_core.so
 vendor/lib64/libmmcamera2_sensor_debug.so
@@ -223,7 +215,7 @@ vendor/lib64/libmmcamera2_stats_algorithm.so
 vendor/lib64/libmm-disp-apis.so
 vendor/lib64/libmm-qdcm.so
 vendor/lib64/libnetmgr.so
-vendor/lib64/libperipheral_client.so|5cf2eab39bacead0334deaf7a904d8e53c4f80bb
+vendor/lib64/libperipheral_client.so
 vendor/lib64/libqcci_legacy.so
 vendor/lib64/libqdi.so
 vendor/lib64/libqdp.so
@@ -266,7 +258,6 @@ vendor/lib64/mediadrm/libwvdrmengine.so
 vendor/lib64/hw/nfc_nci.angler.so
 
 # vendor/lib
-vendor/lib/android.frameworks.bufferhub@1.0.so
 vendor/lib/egl/eglSubDriverAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
@@ -354,9 +345,6 @@ vendor/lib/libimscamera_jni.so
 vendor/lib/lib-imsdpl.so
 vendor/lib/libimsmedia_jni.so
 vendor/lib/lib-imsqimf.so
-vendor/lib/lib-imsrcscmclient.so
-vendor/lib/lib-ims-rcscmjni.so
-vendor/lib/lib-imsrcscmservice.so
 vendor/lib/lib-imsrcscm.so
 vendor/lib/lib-imsrcs.so
 vendor/lib/lib-imsSDP.so
@@ -376,7 +364,7 @@ vendor/lib/libloc_ds_api.so
 vendor/lib/libmdmdetect.so
 vendor/lib/libmdsprpc.so
 vendor/lib/libmm-abl-oem.so
-vendor/lib/libmm-abl.so
+vendor/lib/libmm-abl.so;DISABLE_CHECKELF
 vendor/lib/libmm-als.so
 vendor/lib/libmmcamera2_c2d_module.so
 vendor/lib/libmmcamera2_cpp_module.so
@@ -398,7 +386,7 @@ vendor/lib/libmmcamera_cac2_lib.so
 vendor/lib/libmmcamera_dw9761b_eeprom.so
 vendor/lib/libmmcamera_eeprom_util.so
 vendor/lib/libmmcamera_eztune_module.so
-vendor/lib/libmmcamera_faceproc.so
+vendor/lib/libmmcamera_faceproc.so;DISABLE_CHECKELF
 vendor/lib/libmmcamera_imglib.so
 vendor/lib/libmmcamera_imx179_liteon.so
 vendor/lib/libmmcamera_imx179_sunny.so
@@ -464,7 +452,7 @@ vendor/lib/libnetmgr.so
 vendor/lib/liboemcamera.so
 vendor/lib/liboemcrypto.so
 vendor/lib/libperipheral_client.so
-vendor/lib/libpn548ad_fw.so
+vendor/firmware/libpn548ad_fw.so
 vendor/lib/libqcci_legacy.so
 vendor/lib/libqdi.so
 vendor/lib/libqmi_cci.so
@@ -511,6 +499,10 @@ vendor/lib/hw/nfc_nci.angler.so
 vendor/media/LMspeed_508.emd
 vendor/media/PFFprec_600.emd
 
+#APTX Kanged from taimen QP1A.191005.007.A1
+vendor/lib64/libaptX_encoder.so
+vendor/lib64/libaptXHD_encoder.so
+
 # qcril
 vendor/qcril_database/upgrade/1_version_intro.sql
 vendor/qcril_database/upgrade/2_db_upgrade.sql
@@ -519,3 +511,6 @@ vendor/qcril.db
 
 # vendor/xbin
 vendor/xbin/wlutil
+
+system/lib/libfrsdk.so
+system/lib64/libfrsdk.so
