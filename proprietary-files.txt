@@ -37,8 +37,6 @@ vendor/bin/netmgrd
 vendor/bin/nl_listener
 vendor/bin/oem_qmi_server
 vendor/bin/perfd
-vendor/bin/pm-proxy
-vendor/bin/pm-service
 vendor/bin/port-bridge
 vendor/bin/qmuxd
 vendor/bin/qseecomd
@@ -214,7 +212,6 @@ vendor/lib64/libmmcamera2_stats_algorithm.so
 vendor/lib64/libmm-disp-apis.so
 vendor/lib64/libmm-qdcm.so;DISABLE_CHECKELF
 vendor/lib64/libnetmgr.so
-vendor/lib64/libperipheral_client.so
 vendor/lib64/libqcci_legacy.so
 vendor/lib64/libqdi.so
 vendor/lib64/libqdp.so
@@ -449,7 +446,6 @@ vendor/lib/libmmqjpegdma.so
 vendor/lib/libnetmgr.so
 vendor/lib/liboemcamera.so
 vendor/lib/liboemcrypto.so
-vendor/lib/libperipheral_client.so
 vendor/firmware/libpn548ad_fw.so
 vendor/lib/libqcci_legacy.so
 vendor/lib/libqdi.so
@@ -492,6 +488,12 @@ vendor/lib/libxml.so
 vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib/soundfx/libfmas.so
 vendor/lib/hw/nfc_nci.angler.so
+
+# Peripheral Manager kanged from walleye RP1A.201005.004.A1-6934943-release-keys
+vendor/lib64/libperipheral_client.so|bf59902f2fca95a6dba3c74226f4e7b99bd5349b
+vendor/lib/libperipheral_client.so|84939ddcc3f5fe3a2ee227132b585965569e446c
+vendor/bin/pm-proxy|e65f54ef1e1d82dd00fca454496395d474cd7d45
+vendor/bin/pm-service|4c97ff005180e375b9a59e4f9a09fc30d287d2e9
 
 # vendor/media
 vendor/media/LMspeed_508.emd
