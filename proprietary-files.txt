@@ -490,10 +490,9 @@ vendor/lib/soundfx/libfmas.so
 vendor/lib/hw/nfc_nci.angler.so
 
 # Peripheral Manager kanged from walleye RP1A.201005.004.A1-6934943-release-keys
-vendor/lib64/libperipheral_client.so|bf59902f2fca95a6dba3c74226f4e7b99bd5349b
-vendor/lib/libperipheral_client.so|84939ddcc3f5fe3a2ee227132b585965569e446c
+vendor/lib64/libperipheral_client.so
 vendor/bin/pm-proxy|e65f54ef1e1d82dd00fca454496395d474cd7d45
-vendor/bin/pm-service|4c97ff005180e375b9a59e4f9a09fc30d287d2e9
+vendor/bin/pm-service|453aa026b5fdfbfeb8cfb6ab773151fa986c69b7
 
 # vendor/media
 vendor/media/LMspeed_508.emd
