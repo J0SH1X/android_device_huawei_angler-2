@@ -4,6 +4,12 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+from extract_utils.extract import extract_fns_user_type
+from extract_utils.extract_pixel import (
+    extract_pixel_factory_image,
+    pixel_factory_image_regex,
+)
+
 from extract_utils.fixups_blob import (
     blob_fixup,
     blob_fixups_user_type,
@@ -102,12 +108,17 @@ blob_fixups: blob_fixups_user_type = {
         .binary_regex_replace(b'/system/etc/thermal-engine.conf', b'/vendor/etc/thermal-engine.conf'),
 }  # fmt: skip
 
+extract_fns: extract_fns_user_type = {
+    pixel_factory_image_regex: extract_pixel_factory_image,
+}
+
 module = ExtractUtilsModule(
     'angler',
     'huawei',
     blob_fixups=blob_fixups,
     lib_fixups=lib_fixups,
     namespace_imports=namespace_imports,
+    extract_fns=extract_fns,
 )
 
 if __name__ == '__main__':
