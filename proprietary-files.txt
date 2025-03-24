@@ -498,10 +498,6 @@ vendor/bin/pm-service|453aa026b5fdfbfeb8cfb6ab773151fa986c69b7
 vendor/media/LMspeed_508.emd
 vendor/media/PFFprec_600.emd
 
-#APTX Kanged from taimen QP1A.191005.007.A1
-vendor/lib64/libaptX_encoder.so
-vendor/lib64/libaptXHD_encoder.so
-
 # qcril
 vendor/qcril_database/upgrade/1_version_intro.sql
 vendor/qcril_database/upgrade/2_db_upgrade.sql
